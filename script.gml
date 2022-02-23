@@ -8,6 +8,7 @@
 /// @param {integer} y		y coord to draw the string at
 /// @param {string}	string	the hebrew string to draw	
 function draw_text_hebrew(x, y, str) {
+	
 	var text_output		= "";
 	var length			= string_length(str);
 	
@@ -47,6 +48,7 @@ function draw_text_hebrew(x, y, str) {
 		batch_ittr++;
 		
 	}
+
 	// Reverse the array we just created - while Hebrew strings in the IDE navigate correctly, Hebrew strings are read backwards by the runtime (or correctly depending on which way you're looking at it 😅)
 	batch_array = array_reverse(batch_array);
 	
@@ -79,9 +81,18 @@ function draw_text_hebrew(x, y, str) {
 				var fin_pos			= len_before + (diff / 3);
 				
 				// Adjustments for certain cases - this is incomplete
-				if (batch_array[_i][_acc] == accent_array[2] || this_char == "ך" || this_char == "ן") {
+				if (batch_array[_i][_acc] == accent_array[2] || this_char == "ך" || this_char == "ן" || this_char == "ץ" || this_char == "ש" || in_array("ׁ", batch_array[_i]) || in_array("ׂ", batch_array[_i])) {   	
 					
 					fin_pos			= len_before;
+					
+					if (this_char == "ן" || this_char == "ץ") {
+						fin_pos		= len_before - (diff / 3);
+					}
+					
+					if (in_array("ׁ", batch_array[_i]) || in_array("ׂ", batch_array[_i])) {
+						var _wwi	= string_width("ש");
+						fin_pos		= len_after + (_wwi / 4);
+					}
 					
 				}
 				

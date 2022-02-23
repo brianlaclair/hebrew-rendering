@@ -20,5 +20,6 @@ You can draw Hebrew text by calling
   This function is responsive to default GameMaker draw settings like `draw_set_text`, `draw_set_halign`, and `draw_set_alpha`.
 #### Known Limitations and Issues
 - Can only draw one line of text at a time (linebreaks currently are not recognized by placement of the nekudos)
-- Some characters need more manual adjustment to place nekudos correctly, notably: שּׁ, some characters with offset markings like  ץֳ
 - Currently does not have an extended mode for rotation, scaling, etc.
+
+- Certain characters nekudos are slighly misplaced, though within reasonable limits - if you'd like to contribute to these functions, manual adjustments as found while drawing nekudos is the most impactful place to do so!
